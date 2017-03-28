@@ -13,7 +13,7 @@ int main(void) {
 
     printf(" 크기 입력 : ");
     scanf("%d", &size);
-    //&연산은 둘다 1이면 1 
+    // 마지막 비트를 통해 홀짝 판별
     isOdd=(size&1);
 
     switch(choice) {
