@@ -12,11 +12,11 @@ int main(void) {
     scanf("%d", &size);
     // 마지막 비트와 비교
     isOdd=(size&1);
+    int len = (isOdd) ? size : size-1;
 	switch(choice) {
 		case 1:
 			// i 초기값
 		    i = size;
-            int len = (isOdd) ? size : size-1;
             // *의 개수가 감소하기 시작하는 부분
             comp = (isOdd) ? (size+1)/2 : size/2;
 
@@ -33,8 +33,9 @@ int main(void) {
 		case 2:
             // i 초기값
             i =  size-2;
+	    int len = (isOdd) ? size : size-1;
             comp = (isOdd) ? (size+1)/2 : size/2;
-            for(line=1;line<=size;line++) {
+            for(line=1;line<=len;line++) {
                 for(j=1; j<=size; j++) {
                     if(j<=(size-i)/2) printf("*");
                     else if(j<=(size+i)/2) printf(" ");
