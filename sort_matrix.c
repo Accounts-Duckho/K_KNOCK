@@ -8,7 +8,7 @@
 void inc_sort(int **num, int table_size);
 void dec_sort(int **num, int table_size);
 void reverse_sort(int **num, int table_size);
-void ryle_sort(int **num, int n);
+void upDown_sort(int **num, int n);
 
 int main(void) {
     int n;
@@ -55,7 +55,7 @@ int main(void) {
             reverse_sort(num, n);       break;
 
         case 4:
-            ryle_sort(num, n);      break;
+            upDown_sort(num, n);      break;
 
         default:
             printf("입력값 오류\n");
@@ -129,7 +129,7 @@ void reverse_sort(int **num, int n) {
         *(*num+(table_size-1)-i)=temp;
     }
 }
-void ryle_sort(int **num, int n) {
+void upDown_sort(int **num, int n) {
     int i, temp;
     int table_size=n*n;
     int pt, break_pt;
