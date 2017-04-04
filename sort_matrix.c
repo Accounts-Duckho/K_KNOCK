@@ -144,8 +144,8 @@ void upDown_sort(int **num, int n) {
         else        break_pt+=n/2;
         for(i=pt; i<break_pt; i++) {
             temp=*(*num+i);
-            *(*num+i)=*(*num+2*break_pt-i-((n+1)&1));
-            *(*num+2*break_pt-i-((n+1)&1))=temp;
+            *(*num+i)=*(*num+2*break_pt-i-!(n&1));
+            *(*num+2*break_pt-i-!(n&1))=temp;
         }
     }
 }
