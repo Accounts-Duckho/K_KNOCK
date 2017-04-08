@@ -17,9 +17,8 @@ int main(void) {
 	while(len>5000) {
 		printf("5000이하의 수 입력!\n");
 		printf("문자열의 길이 : ");
-		scanf("%d", &n);
+		scanf("%d", &len);
 	}
-
 	str=(char **)malloc(sizeof(char *)*n);
 	for(i=0 ; i<n ; i++) {
 		str[i]=(char *)malloc(sizeof(char)*(len+1));
