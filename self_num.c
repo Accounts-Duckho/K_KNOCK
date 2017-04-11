@@ -7,19 +7,17 @@ int d(int n) {
 	return tmp;
 }
 int main(void) {
-	int i, j;
-	int sum, tmp;
-	for(i=1; i<5000; i++) {
-		tmp=d(i);
-		printf("[%d] %d\n", i, tmp);
-		for(j=tmp; j>i; j--) 
-			if(tmp==d(j)) {
-				tmp=0;
-				break;
-			}
-		printf("[%d] %d\n", i, tmp);
-	sum+=tmp;
+	int i;
+	int sum=0, gen;
+	int self[5000]={0,};
+	for(i=0; i<5000; i++) {
+		gen=d(i+1)-1;
+		if(gen<5000) 
+			self[gen]=1; 
 	}
+	for(i=0; i<5000; i++) 
+		if(self[i]!=1)
+			sum+=i+1;
 	printf("%d\n", sum); 
 	return 0;
 }
