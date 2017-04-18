@@ -20,4 +20,4 @@ struct User {
 };
 typedef struct User User;
 
-Pokemon* create(int type);
+Pokemon* create(int *type);
