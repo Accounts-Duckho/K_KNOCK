@@ -11,7 +11,6 @@ typedef struct Pocket {
 char* pocket_name[6] = {"치코리타", "이상해씨", "파이리", "리자몽", "꼬부기", "야도란"};
 char* pocket_type[6] = {"풀", "풀", "불꽃", "불꽃, 비행", "물", "물, 에스퍼"};
 Pocket *create() {
-	srand((unsigned)time(NULL));
 	Pocket *mon=(Pocket *)malloc(sizeof(Pocket));
 	int i=rand()%6;
 	strcpy(mon->name, pocket_name[i]);
@@ -21,6 +20,7 @@ Pocket *create() {
 	return mon;
 }	
 int main(void) {
+	srand((unsigned)time());
 	Pocket *pocket=create();
 	printf("== 오늘의 포켓몬은 ? ==\n");
 	printf("%s\n", pocket->name);
