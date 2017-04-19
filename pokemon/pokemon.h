@@ -1,9 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h>
-
 // line length = 50
 #define makeFrame printf("==================================================\n")
-#define blankOut system("clear")
+#ifdef __linux
+	#include <stdlib.h>
+	#define blankOut system("clear")
+#elif _WIN32 || _WIN64
+	#include <windows.h>
+	#define blankOut system("cls")
+#endif
 
 struct Pokemon {	
 	char name[20];
