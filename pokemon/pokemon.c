@@ -30,10 +30,10 @@ int main(void) {
 }
 
 Pokemon* create(int *type) {
-	// 불꽃 타입 2 , 풀 타입 2, 물 타입 2로 저장시킨다.
 	static FILE *pokemon_list_p;
 	static char* pokemon_list[POKELIST_MAX];
 	static int pokemon_type[POKELIST_MAX];
+	int n;
 	if(pokemon_list_p==NULL) {
 		if((pokemon_list_p=fopen("pokemon_list", "r"))==NULL) {
 			printf("pokemon_list 파일이 없습니다.\n");
@@ -47,12 +47,16 @@ Pokemon* create(int *type) {
 		}
 	}
 	Pokemon* pokemon=(Pokemon *)malloc(sizeof(Pokemon));
-	int n=2*(*type-1)+rand()%2;
+	if(type!=NULL)
+		n=2*(*type-1)+rand()%2;
+	else
+		n=2*(rand()%3)+rand()%2;
 	strcpy(pokemon->name, pokemon_list[n]);
 	pokemon->hp=500+rand()%501;
 	pokemon->atk=100+rand()%51;
 	if(type==NULL)
-		*type=pokemon_type[n];
-	pokemon->type=*type;	
+		pokemon->type=pokemon_type[n];
+	else
+		pokemon->type=*type;	
 	return pokemon;
 }
