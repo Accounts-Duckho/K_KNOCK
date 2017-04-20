@@ -25,23 +25,34 @@ int main(void) {
 	} while(sel_type>3 || sel_type<1);
 	user->start_pokemon->type=sel_type;
 	user->start_pokemon=create(&sel_type);
-	printf("%s\n", user->start_pokemon->name);
+	printf("%s %d\n", user->start_pokemon->name, user->start_pokemon->type);
 	return 0;
 }
 
 Pokemon* create(int *type) {
 	// 불꽃 타입 2 , 풀 타입 2, 물 타입 2로 저장시킨다.
-	// 이게 create함수를 부를때 마다 초기화과정을 거치지 않게 해주고 싶은데 뭘써야될까..
-	const static char *pokemon_list[6]=
-		{"불꽃숭이", "브케인", "치코리타", "모부기", "꼬부기", "브이젤"};
+	static FILE *pokemon_list_p;
+	static char* pokemon_list[POKELIST_MAX];
+	static int pokemon_type[POKELIST_MAX];
+	if(pokemon_list_p==NULL) {
+		if((pokemon_list_p=fopen("pokemon_list", "r"))==NULL) {
+			printf("pokemon_list 파일이 없습니다.\n");
+			exit(1);
+		}
+		fscanf(pokemon_list_p, "%*[^\n]\n");
+		int i;
+		for(i=0; i<POKELIST_MAX; i++) {
+			pokemon_list[i]=(char *)malloc(sizeof(char));
+			fscanf(pokemon_list_p, "%d|%s\n", pokemon_type+i, pokemon_list[i]);
+		}
+	}
 	Pokemon* pokemon=(Pokemon *)malloc(sizeof(Pokemon));
-	
 	int n=2*(*type-1)+rand()%2;
 	strcpy(pokemon->name, pokemon_list[n]);
 	pokemon->hp=500+rand()%501;
 	pokemon->atk=100+rand()%51;
 	if(type==NULL)
-		*type=rand()%3+1;
+		*type=pokemon_type[n];
 	pokemon->type=*type;	
 	return pokemon;
 }
