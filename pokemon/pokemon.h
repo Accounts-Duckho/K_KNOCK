@@ -22,8 +22,9 @@ typedef struct Pokemon Pokemon;
 struct User {
 	Pokemon *start_pokemon;
 	Pokemon pokedex[5];	
-	int pokeball;
+	int poketball;
 };
 typedef struct User User;
 
 Pokemon* create(int *type);
+void loadData(User* user);
