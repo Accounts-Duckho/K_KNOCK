@@ -9,19 +9,20 @@
 	#define blankOut system("cls")
 #endif
 
-#define POKEDEX_MAX 5
+#define POKEDEX_MAX 6
 #define POKELIST_MAX 6
 struct Pokemon {	
 	char name[20];
 	int type; // 1: 불, 2: 풀, 3: 물
-	int hp;
+	int cur_hp;	
+	int max_hp;
 	int atk;
 };
 typedef struct Pokemon Pokemon;
 
 struct User {
-	Pokemon *start_pokemon;
-	Pokemon pokedex[5];	
+	Pokemon *my_pokemon[6];
+	int numOfPokemon;
 	int poketball;
 };
 typedef struct User User;
