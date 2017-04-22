@@ -10,7 +10,6 @@
 #endif
 
 #define POKEDEX_MAX 6
-#define POKETYPE_MAX 3
 #define POKELIST_MAX 6
 struct Pokemon {	
 	char name[20];
