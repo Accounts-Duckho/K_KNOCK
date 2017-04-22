@@ -132,10 +132,10 @@ void PokemonInfo(Pokemon* pokemon) {
 			printf("%*s%s\n", 12, "", "  타입 : 불꽃");
 			break;
 		case 2:
-			printf("%*s%s\n", 12, "", "  타입 : 물");
+			printf("%*s%s\n", 12, "", "  타입 : 풀");
 			break;
 		case 3:
-			printf("%*s%s\n", 12, "", "  타입 : 풀");
+			printf("%*s%s\n", 12, "", "  타입 : ");
 			break;
 		default:
 			printf("%*s%s\n", 12, "", "  타입 : 알수없음");
