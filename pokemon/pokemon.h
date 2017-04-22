@@ -10,6 +10,7 @@
 #endif
 
 #define POKEDEX_MAX 6
+#define POKETYPE_MAX 3
 #define POKELIST_MAX 6
 struct Pokemon {	
 	char name[20];
@@ -27,5 +28,10 @@ struct User {
 };
 typedef struct User User;
 
-Pokemon* create(int *type);
+Pokemon* create(int type);
+void mainMenu(User* user);
+void PokemonInfo(Pokemon* pokemon);
+void meetPokemon(User* user, Pokemon* wildPokemon);
+void healPokemon(User* user, int target);
+void saveData(User* user);
 void loadData(User* user);
