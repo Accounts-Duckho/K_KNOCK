@@ -25,19 +25,8 @@ int main(void) {
             // find closest 2^n
             for(i=input; i>=2; i/=2)
                 n++;
-            int value=input;
-            for(i=n; i>=0; i--) {
-                // cal 2^n for compare
-                num=1;
-                for(j=i; j>0; j--)
-                    num*=2;
-                if(value>=num) {
-                    printf("1");
-                    value -= num;
-                }
-                else
-                    printf("0");
-            }
+            for(i=n; i>=0; i--) 
+                printf("%d", input >> i & 0x01);
             printf("\n");
             break;
 
