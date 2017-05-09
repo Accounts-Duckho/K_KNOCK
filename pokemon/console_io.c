@@ -410,6 +410,7 @@ void battle(User* user, Pokemon* wildPokemon) {
 						printf("%*s좀 지치는걸.. 이젠 쉬어야겠어", 11, "");
 						printf("%*sTHE END", 21, "");
 						makeFrame;
+						unsigned int i;
 						for(i=0; i<user->numOfPokemon; i++) free(user->my_pokemon[i]);
 						sleep(3);
 						exit(0);
