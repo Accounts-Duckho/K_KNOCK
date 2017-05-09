@@ -19,13 +19,14 @@ int main(void) {
 	getchar();
 
 	startMenu(user);
+	free(user);
 	return 0;
 }
-Pokemon* create(int type) {
+Pokemon* create(unsigned int type) {
 	static char* pokemon_list[POKELIST_MAX];
-	static int pokemon_type[POKELIST_MAX];
-	static int isListLoaded=0;
-	int n;
+	static unsigned int pokemon_type[POKELIST_MAX];
+	static unsigned int isListLoaded=0;
+	unsigned int n;
 	if(!isListLoaded) {
 		loadPokemonList(pokemon_list, pokemon_type);
 		isListLoaded=1;
@@ -54,13 +55,12 @@ Pokemon* create(int type) {
 		pokemon->type=pokemon_type[n];
 	return pokemon;
 }
-void healPokemon(User* user, int target) {
-	int i;
-	if(target==user->numOfPokemon) {
+void healPokemon(User* user, unsigned int target) {
+	unsigned int i;
+	if(target==user->numOfPokemon) 
 		for(i=0; i<user->numOfPokemon; i++)
 			user->my_pokemon[i]->cur_hp=user->my_pokemon[i]->default_hp;
-		return;
-	}
-	user->my_pokemon[target]->cur_hp = user->my_pokemon[target]->default_hp;
+	else 
+		user->my_pokemon[target]->cur_hp = user->my_pokemon[target]->default_hp;
 }
 

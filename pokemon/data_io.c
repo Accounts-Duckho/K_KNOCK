@@ -2,26 +2,25 @@
 
 #include <stdio.h>
 #include <string.h>
-void loadPokemonList(char* pokemon_list[], int pokemon_type[]) {
+void loadPokemonList(char* pokemon_list[], unsigned int pokemon_type[]) {
 	FILE *pokemon_list_p;
 	if(( pokemon_list_p=fopen("pokemon_list", "r") )==NULL) {
 		printf("pokemon_list 파일이 없습니다.\n");
 		exit(1);
 	}
 	fscanf(pokemon_list_p, "%*[^\n]\n");
-	int i;
+	unsigned int i;
 
 	for(i=0; i<POKELIST_MAX; i++) {
 		pokemon_list[i]=malloc(sizeof(char *));
-		fscanf(pokemon_list_p, "%d|%s\n", &pokemon_type[i], pokemon_list[i]);
+		fscanf(pokemon_list_p, "%u|%s\n", &pokemon_type[i], pokemon_list[i]);
 	}
 
 	fclose(pokemon_list_p);
 }
 void saveData(User* user) {
-	// Save Level 0: start_poket
 	FILE *save_data;
-	int i;
+	unsigned int i;
 	if((save_data=fopen("save_data", "w"))==NULL) {
 		printf("save_data 파일이 없습니다.\n");
 		exit(1);
@@ -38,12 +37,16 @@ void saveData(User* user) {
 			user->my_pokemon[i]->cur_hp^KEY, user->my_pokemon[i]->default_hp^KEY,
 			user->my_pokemon[i]->cur_atk^KEY, user->my_pokemon[i]->default_atk^KEY);
 	}
+	decrypt(user->name);
+	for(i=0; i < user->numOfPokemon; i++) {
+		decrypt(user->my_pokemon[i]->name);
+		decrypt(user->my_pokemon[i]->nickName);
+	}
 	fclose(save_data);
 }
 void loadData(User* user) {
 	FILE *save_data;
 	unsigned int i;
-	unsigned int len_uname, len_poname, len_nick;
 	if((save_data=fopen("save_data", "r"))==NULL) {
 		printf("save_data 파일이 없습니다.\n");
 		exit(1);
