@@ -1,4 +1,4 @@
-#include "pokemon.h"
+﻿#include "pokemon.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -8,6 +8,7 @@
 #elif defined(_WIN32) || defined(_WIN64)
 	#include <io.h>
 	#include <windows.h>
+	#define sleep(t) Sleep(1000*t)
 #endif
 
 void startMenu(User* user) {
