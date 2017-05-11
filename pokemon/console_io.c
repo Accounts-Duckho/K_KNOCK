@@ -408,8 +408,8 @@ void battle(User* user, Pokemon* wildPokemon) {
 					}
 					else {
 						makeFrame;
-						printf("%*s좀 지치는걸.. 이젠 쉬어야겠어", 11, "");
-						printf("%*sTHE END", 21, "");
+						printf("%*s좀 지치는걸.. 이젠 쉬어야겠어\n", 11, "");
+						printf("%*sTHE END\n", 21, "");
 						makeFrame;
 						unsigned int i;
 						for(i=0; i<user->numOfPokemon; i++) free(user->my_pokemon[i]);
